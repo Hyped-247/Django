@@ -1,0 +1,12 @@
+
+{% block content %}
+<h1> Restaurant List </h1>
+{% endblock  %}
+
+<ul>
+    {% for item in object_list %}
+        <li><a href="/restaurants/{{ item.slug }}"> {{ item }}</a><br>
+        {{ item.name }} {{ item.location }} {{ item.category }} {{ item.timestemp }}
+        </li>
+    {%  endfor %}
+</ul>
