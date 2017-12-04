@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
@@ -36,13 +38,19 @@ class RestaurantListView(ListView):
 class RestaurantDetailView(DetailView):
     queryset = RestaurantsLocations.objects.all()
 
+# The way to make sure that you alone can access the data is make sure to add a decorator. That is,
+# what is going to force you to add a user name and password before accessing your information.
 
-class RestaurantCreateView(CreateView):
+
+class RestaurantCreateView(LoginRequiredMixin, CreateView):
     form_class = RestaurantsLocationsCreateForm
     template_name = 'restaurants/form.html'
     success_url = '/restaurants/'
-    # This will allow you to accosiate each user with its data.
+    # since we added LoginRequiredMixin we can use this: login_url =
+    # if you allows want to be logged in, then you need change in in the settings file.
+    #login_url = '/login/'
 
+    # This will allow you to accosiate each user with its data.
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user

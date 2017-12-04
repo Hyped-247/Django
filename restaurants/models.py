@@ -17,7 +17,7 @@ class RestaurantsLocations(models.Model):
     slug            = models.SlugField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.owner)
+        return self.name
 
     @property
     def title(self):
