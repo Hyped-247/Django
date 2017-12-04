@@ -1,9 +1,11 @@
 {% block content %}
-<h1> Add Restaurant  </h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div >
+        <h1> Add Restaurant  </h1>
+            <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
         <button type="submit"> Save </button>
-    </form>
+         </form>
+    </div>
 {% endblock  %}
 

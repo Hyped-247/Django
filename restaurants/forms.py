@@ -27,8 +27,6 @@ class RestaurantCreateForm(forms.Form):
 
 
 class RestaurantsLocationsCreateForm(forms.ModelForm):
-    email = forms.EmailField()
-    category = forms.CharField(required=False, validators=[])
 
     class Meta:
         model = RestaurantsLocations

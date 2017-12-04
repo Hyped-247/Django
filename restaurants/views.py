@@ -1,10 +1,8 @@
 from django.db.models import Q
-from django.http import HttpResponseRedirect
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.views.generic import CreateView
 from .models import RestaurantsLocations
-from django.shortcuts import render
 from .forms import RestaurantsLocationsCreateForm
 
 """
@@ -19,6 +17,7 @@ def restaurant_createView(request):
     context = {'form': form}
     return render(request, template_name, context)
 """
+
 
 class RestaurantListView(ListView):
     template_name = 'restaurants/restaurants_list.html'
@@ -42,6 +41,15 @@ class RestaurantCreateView(CreateView):
     form_class = RestaurantsLocationsCreateForm
     template_name = 'restaurants/form.html'
     success_url = '/restaurants/'
+    # This will allow you to accosiate each user with its data.
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.owner = self.request.user
+        return super(RestaurantCreateView, self).form_valid(form)
+
+
+
 
 
 
