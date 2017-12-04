@@ -51,16 +51,3 @@ class RestaurantCreateView(CreateView):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-

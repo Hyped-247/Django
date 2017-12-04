@@ -27,7 +27,6 @@ class RestaurantCreateForm(forms.Form):
 
 
 class RestaurantsLocationsCreateForm(forms.ModelForm):
-
     class Meta:
         model = RestaurantsLocations
         fields = [
