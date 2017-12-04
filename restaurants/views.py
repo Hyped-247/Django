@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
+from django.contrib.auth.views import PasswordResetView
 from django.db.models import Q
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
@@ -32,7 +32,7 @@ class RestaurantDetailView(DetailView):
 class RestaurantCreateView(LoginRequiredMixin, CreateView):
     form_class = RestaurantsLocationsCreateForm
     template_name = 'restaurants/form.html'
-    success_url = '/restaurants/'
+    #success_url = '/restaurants/'
     # since we added LoginRequiredMixin we can use this: login_url =
     # if you allows want to be logged in, then you need change in in the settings file.
     login_url = '/login/'
