@@ -13,40 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic.base import TemplateView
-from restaurants.views import (
+from django.contrib.auth.views import LoginView
 
-    RestaurantListView,
-    RestaurantDetailView,
-    RestaurantCreateView,
-)
+from restaurants.views import RestaurantListView, RestaurantCreateView, RestaurantDetailView
 
 urlpatterns = [
+    # core
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
+    url(r'^base/$', TemplateView.as_view(template_name='base.html')),
+    url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^content/$', TemplateView.as_view(template_name='content.html')),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+
+    # restaurants
     url(r'^restaurants/$', RestaurantListView.as_view()),
     url(r'^restaurants/create/$', RestaurantCreateView.as_view()),
     url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view()),
-    url(r'^content/$', TemplateView.as_view(template_name='content.html')),
-    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

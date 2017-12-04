@@ -1,24 +1,11 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 from django.db.models import Q
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.views.generic import CreateView
 from .models import RestaurantsLocations
 from .forms import RestaurantsLocationsCreateForm
-
-"""
-def restaurant_createView(request):
-    form = RestaurantsLocationsCreateForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect('/restaurants/')
-    if form.errors:
-        print(form.errors)
-    template_name = 'restaurants/form.html'
-    context = {'form': form}
-    return render(request, template_name, context)
-"""
 
 
 class RestaurantListView(ListView):
@@ -48,7 +35,7 @@ class RestaurantCreateView(LoginRequiredMixin, CreateView):
     success_url = '/restaurants/'
     # since we added LoginRequiredMixin we can use this: login_url =
     # if you allows want to be logged in, then you need change in in the settings file.
-    #login_url = '/login/'
+    login_url = '/login/'
 
     # This will allow you to accosiate each user with its data.
     def form_valid(self, form):
@@ -57,5 +44,6 @@ class RestaurantCreateView(LoginRequiredMixin, CreateView):
         return super(RestaurantCreateView, self).form_valid(form)
 
 
-
+class PasswordReset(PasswordResetView):
+    template_name = 'registration/password_reset_form.html'
 
