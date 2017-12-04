@@ -1,7 +1,6 @@
 {% block content %}
 <h1> Restaurant List </h1>
 {% endblock  %}
-
 <ul>
     {% for item in object_list %}
         <li><a href="{{item.get_absolute_url}}"> {{ item }}</a><br>

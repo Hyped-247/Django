@@ -19,13 +19,15 @@ class RestaurantsLocations(models.Model):
 
     def __str__(self):
         return self.name
+    # This funcaiton will take care of putting everything in the right place.
 
     def get_absolute_url(self):
         # This is the bad way to do it.
         # return f"/restaurants/{self.slug}/"
 
         # This is the good way to do it.
-        return reverse('restaurant-detail', kwargs={'slug':self.slug})
+        # 'This is the namespace : This is the name of the url. '
+        return reverse('restaurants:detail', kwargs={'slug' : self.slug})
 
     @property
     def title(self):
