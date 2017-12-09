@@ -1,6 +1,5 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordResetView
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.views.generic import CreateView
@@ -25,14 +24,14 @@ class RestaurantListView(ListView):
 class RestaurantDetailView(DetailView):
     queryset = RestaurantsLocations.objects.all()
 
-# The way to make sure that you alone can access the data is make sure to add a decorator. That is,
-# what is going to force you to add a user name and password before accessing your information.
+    # The way to make sure that you alone can access the data is make sure to add a decorator. That is,
+    # what is going to force you to add a user name and password before accessing your information.
 
 
 class RestaurantCreateView(LoginRequiredMixin, CreateView):
     form_class = RestaurantsLocationsCreateForm
-    template_name = 'restaurants/form.html'
-    #success_url = '/restaurants/'
+    template_name = 'form.html'
+    # success_url = '/restaurants/'
     # since we added LoginRequiredMixin we can use this: login_url =
     # if you allows want to be logged in, then you need change in in the settings file.
     login_url = '/login/'
@@ -43,7 +42,7 @@ class RestaurantCreateView(LoginRequiredMixin, CreateView):
         instance.owner = self.request.user
         return super(RestaurantCreateView, self).form_valid(form)
 
-
-class PasswordReset(PasswordResetView):
-    template_name = 'registration/password_reset_form.html'
-
+    def get_context_data(self, *args, **kwargs):
+        context = super(RestaurantCreateView, self).get_context_data(*args, **kwargs)
+        context['title'] = 'Add Restaurant'
+        return context

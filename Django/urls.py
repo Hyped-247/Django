@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^content/$', TemplateView.as_view(template_name='content.html'), name='content'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
+    url(r'^items/', include('menues.urls', namespace='menues')),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
 ]
 
