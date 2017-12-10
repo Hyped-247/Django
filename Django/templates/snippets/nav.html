@@ -1,6 +1,7 @@
-<div class="container">
 <a href="{% url 'home' %}"> Home </a><br>
-<a href="{% url 'about' %}">about</a><br>
-<a href="{% url 'content' %}">content</a><br>
+{% if request.user.is_authenticated %}
 <a href="{% url 'restaurants:list' %}">Restaurants</a><br>
-</div>
+<a href="{% url 'menues:list' %}">menues List </a><br>
+{% endif %}
+
+

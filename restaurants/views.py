@@ -8,12 +8,14 @@ from .forms import RestaurantsLocationsCreateForm
 
 class RestaurantListView(LoginRequiredMixin, ListView):
     template_name = 'restaurants/restaurants_list.html'
+    login_url = '/login/'
 
     def get_queryset(self):
         return RestaurantsLocations.objects.filter(owner=self.request.user)
 
 
 class RestaurantDetailView(LoginRequiredMixin, DetailView):
+    login_url = '/login/'
 
     def get_queryset(self):
         return RestaurantsLocations.objects.filter(owner=self.request.user)
@@ -25,7 +27,7 @@ class RestaurantDetailView(LoginRequiredMixin, DetailView):
 class RestaurantCreateView(LoginRequiredMixin, CreateView):
     form_class = RestaurantsLocationsCreateForm
     template_name = 'form.html'
-    # success_url = '/restaurants/'
+    success_url = '/restaurants/'
     # since we added LoginRequiredMixin we can use this: login_url =
     # if you allows want to be logged in, then you need change in in the settings file.
     login_url = '/login/'
