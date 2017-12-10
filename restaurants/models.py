@@ -27,7 +27,7 @@ class RestaurantsLocations(models.Model):
 
         # This is the good way to do it.
         # 'This is the namespace : This is the name of the url. '
-        return reverse('restaurants:detail', kwargs={'slug' : self.slug})
+        return reverse('restaurants:detail', kwargs={'slug': self.slug})
 
     @property
     def title(self):
