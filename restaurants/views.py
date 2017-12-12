@@ -46,7 +46,7 @@ class RestaurantCreateView(LoginRequiredMixin, CreateView):
 
 class RestaurantUpdateView(LoginRequiredMixin, UpdateView):
     form_class = RestaurantsLocationsCreateForm
-    template_name = 'form.html'
+    template_name = '/restaurants/detial-update.html'
     login_url = '/login/'
 
     def get_context_data(self, *args, **kwargs):

@@ -1,0 +1,9 @@
+{% block content %}
+<h1> Restaurant List {{ form.instance.title }}</h1>
+<h1> {{ form.instance.name }} </h1>
+<h1> {{ form.instance.location }} </h1>
+<h1> {{ form.instance.owner }} </h1>
+<h1> {{ form.instance.timestemp }} </h1>
+<h1> {{ form.instance.updated|timeuntil }} </h1>
+{% endblock  %}
+
