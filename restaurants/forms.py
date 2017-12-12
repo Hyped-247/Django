@@ -17,3 +17,8 @@ class RestaurantsLocationsCreateForm(forms.ModelForm):
         if location == 'Jeddah':
             raise forms.ValidationError('This cannot be the city since it is really cool')
         return location
+
+
+
+
+

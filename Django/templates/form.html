@@ -1,11 +1,4 @@
 {% block content %}
-    <div >
-        <h1> {{ title }}  </h1>
-            <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-        <button type="submit"> Save </button>
-         </form>
-    </div>
+        {% include 'snippets/form-anippets.html' %}
 {% endblock  %}
 

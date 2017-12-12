@@ -15,6 +15,7 @@ class RestaurantListView(LoginRequiredMixin, ListView):
 
 
 class RestaurantDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'restaurants/detial-update.html'
     login_url = '/login/'
 
     def get_queryset(self):

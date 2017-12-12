@@ -10,6 +10,7 @@ class ItemListView(ListView):
 
 
 class ItemDetailView(DetailView):
+
     def get_queryset(self):
         return Item.objects.filter(user=self.request.user)
 
@@ -17,6 +18,7 @@ class ItemDetailView(DetailView):
 class ItemCreateView(LoginRequiredMixin, CreateView):
     template_name = 'form.html'
     form_class = ItemForm
+    success_url = '/items/'
     login_url = '/login/'
 
     def form_valid(self, form):
@@ -39,7 +41,7 @@ class ItemCreateView(LoginRequiredMixin, CreateView):
 
 
 class ItemUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = 'form.html'
+    template_name = 'menues/detial-update.html'
     form_class = ItemForm
     login_url = '/login/'
 
