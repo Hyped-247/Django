@@ -17,6 +17,9 @@ class Item(models.Model):
     class Meta:
         ordering = ['-updated', '-timestamp']
 
+    def __str__(self):
+        return self.name
+
     def get_absolute_url(self):
         return reverse('menues:detail', kwargs={'pk': self.pk})
 

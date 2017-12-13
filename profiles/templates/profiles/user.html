@@ -1,5 +1,26 @@
 {% block content %}
-<h1> {{ user.username }}  </h1>
+<h1> {{ user.username }} </h1>
+    <hr>
+        {% if  user.item_set.all.exists %}
+        {% for rest in user.restaurantslocations_set.all %}
+            <li>{{ rest.name }}
+                <ul>
+                        {%  for item in rest.item_set.all %}
+                            <li> {{ item.name }}<br>
+                                {% for ing in item.get_contents %}
+                                    <span style="margin-right: 4px; background-color: lavenderblush" > {{ ing }}</span>
+
+                                {% endfor %}
+                            </li>
+
+                        {% endfor %}
+                </ul>
+            </li>
+
+        {% endfor %}
+    {% else %}
+    <p class="lead"> No Items Found </p>
+    {% endif %}
+
+    <hr>
 {% endblock  %}
-<ul>
-</ul>

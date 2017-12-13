@@ -3,7 +3,6 @@ from django.conf.urls import url
 
 from .views import (
     ItemListView,
-    ItemDetailView,
     ItemUpdateView,
     ItemCreateView,
 )
