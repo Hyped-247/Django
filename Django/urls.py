@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^u/', include('profiles.urls', namespace='profiles')),
     url(r'^content/$', TemplateView.as_view(template_name='content.html'), name='content'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^items/', include('menues.urls', namespace='menues')),
