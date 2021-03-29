@@ -17,7 +17,7 @@ pefile==2017.11.5
 Pillow==4.3.0
 psycopg2==2.7.3.2
 pyenchant==1.6.11
-Pygments==2.2.0
+Pygments==2.7.4
 PyInstaller==3.3
 pyobjc==4.0
 pyobjc-core==4.0
